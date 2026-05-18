@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e1e1;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* Кастомный чекбокс */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    display: none; /* скрываем нативный чекбокс */
+}
+
+.checkbox-label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    user-select: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Создаём квадратик для галочки */
+.checkbox-label .checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 22px;
+    width: 22px;
+    background-color: #f5f5f5;
+    border: 2px solid #d1d1d1;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* При наведении */
+.checkbox-label:hover .checkmark {
+    border-color: #667eea;
+    background-color: #f0f3ff;
+}
+
+/* Когда чекбокс отмечен */
+.checkbox-group input:checked + .checkbox-label .checkmark {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+/* Галочка (псевдоэлемент) */
+.checkbox-label .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Показываем галочку, когда чекбокс активен */
+.checkbox-group input:checked + .checkbox-label .checkmark::after {
+    display: block;
+}
+
+/* Кнопка */
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(102, 126, 234, 0.3);
+}
