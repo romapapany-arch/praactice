@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+     <title>Country Search</title>
+</head>
+<body>
+     <div class="container">
+          <h1>Country Search</h1>
+          <form class="search-box" method="post" id="search-box">
+               <input type="text" name="country-name" id="country-input" placeholder="Search Country...">
+               <button type="submit" aria-label="search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/></svg></button>
+          </form>
+          <p class="errorTxt" id="errorTxt"></p>
+          <div class="country-details" id="country-details">
+               <h2 id="country-name">Country Name</h2>
+               <div class="grid">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg" alt="flag" width="200" class="flag" id="flag">
+                    <ul class="info">
+                         <li><strong>Capital:</strong><span id="capital-city"></span></li>
+                         <li><strong>Area:</strong><span id="area"></span><span>km<sup>2</sup></span></li>
+                         <li><strong>Population:</strong><span id="population"></span>People</li>
+                         <li><strong>Population Density:</strong><span id="pop-density"></span><span>People/km<sup>2</sup></span></li>
+                         <li><strong>Currency:</strong><span id="currency"></span></li>
+                         <li><strong>Languages:</strong><span id="languages"></span></li>
+                         <li><strong>Continent:</strong><span id="continent"></span></li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+     <script src="app.js"></script>
+</body>
+</html>
