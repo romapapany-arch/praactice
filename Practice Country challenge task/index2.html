@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REST Countries API – Full Featured (Vanilla JS)</title>
+  <link rel="stylesheet" href="styles (1).css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Where in the world?</h1>
+    <div class="header-buttons">
+      <button id="favoritesToggle" class="favorites-toggle">
+        ❤️ <span id="favCount">0</span> Favorites
+      </button>
+      <button id="themeToggle" class="theme-toggle">
+        <span id="themeIcon">🌙</span> Dark Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTROLS -->
+  <div id="controls" class="controls">
+    <input
+      type="text"
+      id="searchInput"
+      class="search-input"
+      placeholder="Search for a country..."
+    />
+    <select id="regionSelect" class="region-select">
+      <option value="">Filter by Region</option>
+      <option value="Africa">Africa</option>
+      <option value="Americas">America</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+    </select>
+    <!-- НОВЫЙ ФИЛЬТР СОРТИРОВКИ ПО НАСЕЛЕНИЮ -->
+    <select id="sortSelect" class="sort-select">
+      <option value="default">Sort by Population</option>
+      <option value="asc">Population: Low to High</option>
+      <option value="desc">Population: High to Low</option>
+    </select>
+  </div>
+
+  <!-- COUNTRIES GRID -->
+  <div id="countriesGrid" class="countries-grid"></div>
+
+  <!-- DETAIL VIEW (hidden by default) -->
+  <div id="detailView" class="detail-container" style="display: none;"></div>
+
+  <!-- LOADING / ERROR -->
+  <div id="statusMessage" class="loading" style="display: none;"></div>
+
+  <script src="app.js">
+      
+  </script>
+</body>
+</html>
