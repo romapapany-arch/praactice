@@ -1,106 +1,268 @@
-*{
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-body{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     background: rgb(29, 172, 182);
-     min-height: 100vh;
-     padding: 10px;
-}
-.container{
-     background: #fafafa;
-     padding: 20px;
-     border-radius: 10px;
-     width: 100%;
-     max-width: 550px;
-     box-shadow: 0 5px 25px rgba(0,0,0,.5);
-}
-.container form{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-wrap: wrap;
-     gap: 5px;
-     width: 100%;
-     margin: 10px 0;
-}
-.container form :where(input, button){
-     flex-grow: 1;
-     flex-shrink: 0;
-     border-radius: 10px;
-     padding: 0.5em;
-     transition: .3s;
-}
-.container form input{
-     font-size: 16px;
-     border: 2px solid #bbb;
-     outline: none;
-}
-.container form input:focus{
-     border-color: #22b4ad;
-     box-shadow: 0 0 5px #22b455;
-}
-.container form button{
-     border: 2px solid rgb(29, 172, 182);;
-     color: rgb(29, 172, 182);;
-     background: none;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     cursor: pointer;
-}
-.container form button:hover{
-     background: rgb(29, 172, 182);
-     color: #fafafa;
-}
-.container .country-details{
-     display: none;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     gap: 10px;
-}
-.container .country-details.active{
-     display: flex;
-}
-.container .country-details .grid{
-     display: grid;
-     grid-template-columns: 1fr 2fr;
-     justify-content: center;
-     align-items: center;
-     gap: 10px;
-}
-.container .country-details .grid .flag{
-     border-radius: 10px;
-}
-.container .country-details .grid ul{
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     gap: 5px;
-     list-style: none;
-     font-size: 18px;
-}
-.container .country-details .grid ul li{
-     display: flex;
-     align-items: center;
-     gap: 8px;
-}
-.errorTxt{
-     color: #dc3545;
-     font-weight: 500;
-     font-size: 20px;
-}
-@media screen and (max-width: 500px){
-     .container .country-details .grid{
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-     }
-}
+    :root {
+      --bg: hsl(0, 0%, 98%);
+      --text: hsl(200, 15%, 8%);
+      --elements: hsl(0, 0%, 100%);
+      --input: hsl(0, 0%, 52%);
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --fav-active: #e53e3e;
+    }
+    [data-theme="dark"] {
+      --bg: hsl(207, 26%, 17%);
+      --text: hsl(0, 0%, 100%);
+      --elements: hsl(209, 23%, 22%);
+      --input: hsl(0, 0%, 80%);
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: var(--elements);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      margin-right: auto;
+    }
+    .header-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .theme-toggle,
+    .favorites-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .theme-toggle:hover,
+    .favorites-toggle:hover {
+      opacity: 0.7;
+    }
+
+    /* CONTROLS */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .search-input {
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      background: var(--elements);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      width: 300px;
+      max-width: 100%;
+      outline: none;
+    }
+    .search-input::placeholder {
+      color: var(--input);
+    }
+    .region-select,
+    .sort-select {
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      background: var(--elements);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* CARDS GRID */
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+      padding: 0 2rem 2rem;
+    }
+    .country-card {
+      background: var(--elements);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .country-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .country-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .card-info {
+      padding: 1.5rem;
+    }
+    .card-info h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      margin-right: 30px;
+    }
+    .card-info p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .card-info span {
+      font-weight: 600;
+    }
+
+    /* FAVORITE BUTTON ON CARD */
+    .fav-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .fav-btn:hover {
+      transform: scale(1.1);
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .fav-btn.active {
+      color: var(--fav-active);
+      background: white;
+    }
+
+    /* DETAIL VIEW */
+    .detail-container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .back-btn {
+      background: var(--elements);
+      border: none;
+      padding: 0.6rem 2rem;
+      border-radius: 5px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      margin-bottom: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .back-btn:hover {
+      opacity: 0.8;
+    }
+    .detail-content {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .detail-flag {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .detail-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .detail-columns {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .detail-column {
+      flex: 1;
+      min-width: 200px;
+    }
+    .detail-column p {
+      line-height: 2;
+    }
+    .detail-column span {
+      font-weight: 600;
+    }
+    .border-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .border-tags button {
+      background: var(--elements);
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 3px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+    .border-tags button:hover {
+      opacity: 0.8;
+    }
+
+    .loading,
+    .error-msg {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1rem;
+      }
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-input {
+        width: 100%;
+      }
+      .detail-content {
+        flex-direction: column;
+      }
+    }

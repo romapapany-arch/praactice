@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="styles (1).css">
-     <title>Country Search</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REST Countries API – Full Featured (Vanilla JS)</title>
+  <link rel="stylesheet" href="styles (1).css">
+  <style>
+
+  </style>
 </head>
 <body>
-     <div class="container">
-          <h1>Country Search</h1>
-          <form class="search-box" method="post" id="search-box">
-               <input type="text" name="country-name" id="country-input" placeholder="Search Country...">
-               <button type="submit" aria-label="search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/></svg></button>
-          </form>
-          <p class="errorTxt" id="errorTxt"></p>
-          <div class="country-details" id="country-details">
-               <h2 id="country-name">Country Name</h2>
-               <div class="grid">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg" alt="flag" width="200" class="flag" id="flag">
-                    <ul class="info">
-                         <li><strong>Capital:</strong><span id="capital-city"></span></li>
-                         <li><strong>Area:</strong><span id="area"></span><span>km<sup>2</sup></span></li>
-                         <li><strong>Population:</strong><span id="population"></span>People</li>
-                         <li><strong>Population Density:</strong><span id="pop-density"></span><span>People/km<sup>2</sup></span></li>
-                         <li><strong>Currency:</strong><span id="currency"></span></li>
-                         <li><strong>Languages:</strong><span id="languages"></span></li>
-                         <li><strong>Continent:</strong><span id="continent"></span></li>
-                    </ul>
-               </div>
-          </div>
-     </div>
-     <script src="app.js"></script>
+  <!-- HEADER -->
+  <header class="header">
+    <h1>Where in the world?</h1>
+    <div class="header-buttons">
+      <button id="favoritesToggle" class="favorites-toggle">
+        ❤️ <span id="favCount">0</span> Favorites
+      </button>
+      <button id="themeToggle" class="theme-toggle">
+        <span id="themeIcon">🌙</span> Dark Mode
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTROLS -->
+  <div id="controls" class="controls">
+    <input
+      type="text"
+      id="searchInput"
+      class="search-input"
+      placeholder="Search for a country..."
+    />
+    <select id="regionSelect" class="region-select">
+      <option value="">Filter by Region</option>
+      <option value="Africa">Africa</option>
+      <option value="Americas">America</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+    </select>
+    <!-- НОВЫЙ ФИЛЬТР СОРТИРОВКИ ПО НАСЕЛЕНИЮ -->
+    <select id="sortSelect" class="sort-select">
+      <option value="default">Sort by Population</option>
+      <option value="asc">Population: Low to High</option>
+      <option value="desc">Population: High to Low</option>
+    </select>
+  </div>
+
+  <!-- COUNTRIES GRID -->
+  <div id="countriesGrid" class="countries-grid"></div>
+
+  <!-- DETAIL VIEW (hidden by default) -->
+  <div id="detailView" class="detail-container" style="display: none;"></div>
+
+  <!-- LOADING / ERROR -->
+  <div id="statusMessage" class="loading" style="display: none;"></div>
+
+  <script src="app.js">
+      
+  </script>
 </body>
 </html>
